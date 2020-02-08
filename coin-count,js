@@ -1,0 +1,36 @@
+var changeCombo = function(money) {
+
+    var coins = [1,5,10,25];
+    var count = 0;
+    
+    //recursive function
+    var changeCount = function(index, changeLeft){
+        
+        var currentCoin = coins[index];
+        
+        if( index === 0){
+        
+            if(changeLeft%currentCoin === 0){
+            
+                count++;
+            
+            }
+        
+            return;
+        
+        }
+        
+        while(changeLeft >= 0){
+            
+            changeCount(index-1, changeLeft);
+            
+            changeLeft -= currentCoin;
+            
+        }
+    }
+
+    changeCount(coins.length, money);
+    return count;
+}
+
+print(changeCombo(93))
